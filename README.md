@@ -156,6 +156,9 @@ This project demonstrates practical skills in web development, data management, 
 
 ## 📸 Preview
 
+### Login
+![Login](screenshots/login.png)
+
 An example screenshot is available in the `screenshots/` folder if included in the repository.
 
 ---
