@@ -1,60 +1,163 @@
-# CodeIgniter 4 Framework
+# 🧾 PWD Record Management System
 
-## What is CodeIgniter?
+A web-based **PWD Record Management System** to manage records and services for Persons With Disabilities (PWDs). The application centralizes person profiles, assistance records, appointments, payments, and reporting for administrators and staff.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## 🚀 Project Overview
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+This project is built with **PHP** and **CodeIgniter 4**, following the MVC architecture, and uses **MySQL/MariaDB** for persistent storage. It provides CRUD tools for maintaining PWD profiles, logging assistance and services, scheduling appointments, recording payments, and generating administrative reports.
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## 👥 User Roles
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+### 1. Administrator
 
-## Important Change with index.php
+Administrators can:
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+* View the system dashboard and summary statistics.
+* Manage PWD profiles (create, edit, search, archive).
+* Record assistance/services and appointments.
+* Manage payments and receipts.
+* Generate reports and export data.
+* Manage user accounts and system settings.
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### 2. Staff
 
-**Please** read the user guide for a better explanation of how CI4 works!
+Staff users can perform day-to-day tasks according to their permissions, such as registering PWDs, recording service delivery, scheduling appointments, and assisting with payments.
 
-## Repository Management
+## 🧩 Key Features
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+| **Feature**                 | **Description**                                                       |
+| --------------------------: | --------------------------------------------------------------------- |
+| **PWD Management**          | Register, edit, search, and archive PWD profiles.                     |
+| **Assistance Records**      | Log services, assistance details, and outcomes.                       |
+| **Appointments**            | Schedule and manage appointments with reminders.                      |
+| **Payment Tracking**        | Record payments, generate receipts, and view payment history.         |
+| **Reporting**               | Generate reports for services, payments, and program metrics.         |
+| **Authentication**          | Login with role-based access control and password protection.         |
+| **Audit Logs**              | Track important user actions for accountability.                      |
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## 🏗️ System Architecture
 
-## Contributing
+The project follows the **Model-View-Controller (MVC)** pattern provided by CodeIgniter 4.
 
-We welcome contributions from the community.
+* **Controllers** – Handle incoming requests and coordinate responses.
+* **Models** – Encapsulate database operations and business logic.
+* **Views** – Render HTML and front-end templates.
+* **Routes** – Map URLs to controllers and actions.
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+## 🗄️ Database
 
-## Server Requirements
+The system uses **MySQL/MariaDB** to store core data, including:
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+* Users
+* PWD profiles
+* Assistance / service records
+* Appointments
+* Payments
+* Audit logs
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+If a SQL dump is provided in the repository, it will usually be located in the `Database/` folder.
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+## 🔐 Demo Credentials
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+Use this account for demo/local access:
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+| **Account**  | **Credentials** |
+| ------------ | --------------- |
+| **Username** | `admin`         |
+| **Password** | `password`      |
+| **Role**     | Administrator   |
+
+> **Note:** These credentials are for local/demo use only. Change them in production.
+
+## 🛠️ Technologies Used
+
+* **PHP 8.1+**
+* **CodeIgniter 4**
+* **MySQL / MariaDB**
+* **HTML / CSS / JavaScript**
+* **Composer**
+
+## 💻 How to Install & Run
+
+### 1. Requirements
+
+Install the following on your development machine:
+
+* **PHP 8.1+**
+* **Composer**
+* **MySQL / MariaDB**
+* A local PHP environment such as **XAMPP**, **Laragon**, or similar
+
+### 2. Download the Project
+
+Clone the repository:
+
+```bash
+git clone https://github.com/chardoxx-3/PWD-Record-Management-System.git
+cd PWD-Record-Management-System
+```
+
+### 3. Install Dependencies
+
+Run Composer inside the project folder:
+
+```bash
+composer install
+```
+
+### 4. Configure Environment
+
+Copy the environment example and update database settings:
+
+```powershell
+copy env .env
+```
+
+Open `.env` and set your database connection values, for example:
+
+```env
+database.default.hostname = localhost
+database.default.database = pwd_records
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.port = 3306
+```
+
+### 5. Create / Import Database
+
+Create a database (for example `pwd_records`) and import any SQL dump included in `Database/` if present.
+
+### 6. Run the Development Server
+
+Start CodeIgniter's built-in server:
+
+```bash
+php spark serve
+```
+
+Open your browser at:
+
+```text
+http://localhost:8080
+```
+
+### 7. Login
+
+Use the demo administrator credentials above to sign in.
+
+## 🔄 Typical Workflow
+
+Login → Dashboard → Register PWD → Record Assistance → Schedule Appointment → Record Payment → Generate Report
+
+## 🎯 Purpose
+
+This project demonstrates practical skills in web development, data management, MVC architecture, CRUD operations, authentication, scheduling, and reporting for social service programs.
+
+## 📸 Preview
+
+An example screenshot is available in the `screenshots/` folder if included in the repository.
+
+---
+
+If you'd like, I can also add a project-specific database dump reference, update the demo credentials, or adjust any section to match your deployment environment.
