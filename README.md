@@ -158,9 +158,3 @@ This project demonstrates practical skills in web development, data management, 
 
 ### Login
 ![Login](screenshots/login.png)
-
-An example screenshot is available in the `screenshots/` folder if included in the repository.
-
----
-
-If you'd like, I can also add a project-specific database dump reference, update the demo credentials, or adjust any section to match your deployment environment.
